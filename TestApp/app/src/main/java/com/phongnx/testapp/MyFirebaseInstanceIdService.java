@@ -18,6 +18,7 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
         String recent_token = FirebaseInstanceId.getInstance().getToken();
         Log.d("phongnx1", "Go here");
         Log.d("phongnx1", "Test merge");
+		Log.d("phongnx1", "Test may khac");
         Log.d(REG_TOKEN, recent_token);
 
     }
