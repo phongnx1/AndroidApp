@@ -27,22 +27,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         //Log data to Log Cat
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
-        // Phần này là xử lý cho display message
+        // Process for display message
         if(remoteMessage.getNotification() != null){
             Log.d(TAG, "Notification Message: " + remoteMessage.getNotification());
+            Log.d(TAG, "Notification Title: " + remoteMessage.getNotification().getTitle());
             createNotification(remoteMessage.getNotification().getTitle() ,remoteMessage.getNotification().getBody());
 
         }
 
-        // Phần này xử lý data message
-        if(remoteMessage.getData() != null){
+        // Process for data message
+        if(remoteMessage.getData() != null && !remoteMessage.getData().equals("")){
             Log.d(TAG, "Notification Data: " + remoteMessage.getData());
             String body = "code: " + remoteMessage.getData().get("code") + " message: " + remoteMessage.getData().get("message") + " id: " + remoteMessage.getData().get("id");
             String title = "DATA Message";
             createNotification(title, body);
         }
-
-
     }
 
     private void createNotification(String title, String body) {
